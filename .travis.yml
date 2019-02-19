@@ -44,7 +44,6 @@ jobs:
       before_deploy:
         - cp manifest-allocations.yml manifest.yml
         - echo "Deploying allocations server $RELEASE_TAG"
-        - chmod a+x scripts/migrate-databases.sh
       deploy: &cloudfoundry
         provider: cloudfoundry
         api: $CF_API_URL
@@ -60,7 +59,6 @@ jobs:
       before_deploy:
         - cp manifest-backlog.yml manifest.yml
         - echo "Deploying backlog server $RELEASE_TAG"
-        - chmod a+x scripts/migrate-databases.sh
       deploy:
         <<: *cloudfoundry
     - stage: deploy
@@ -71,7 +69,6 @@ jobs:
       before_deploy:
         - cp manifest-registration.yml manifest.yml
         - echo "Deploying registration server $RELEASE_TAG"
-        - chmod a+x scripts/migrate-databases.sh
       deploy:
         <<: *cloudfoundry
     - stage: deploy
@@ -82,7 +79,6 @@ jobs:
       before_deploy:
         - cp manifest-timesheets.yml manifest.yml
         - echo "Deploying timesheets server $RELEASE_TAG"
-        - chmod a+x scripts/migrate-databases.sh
       deploy:
         <<: *cloudfoundry
     - stage: migrate
